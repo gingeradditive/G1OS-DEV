@@ -51,6 +51,8 @@ sed \
   -e 's|if \[ "$EUID" -eq 0 \]; then|if false; then|' \
   -e 's|if ! command -v python3 &> /dev/null; then|if false; then|' \
   -e 's|if \[.*klipper.service.*\]; then|if true; then|' \
+  -e 's|sudo systemctl restart klipper|echo "Skipping klipper restart"|' \
+  -e 's|sudo systemctl restart moonraker|echo "Skipping moonraker restart"|' \
   < install.sh > temp_install.sh
 chmod +x temp_install.sh
 sudo -u "${BASE_USER}" ./temp_install.sh
