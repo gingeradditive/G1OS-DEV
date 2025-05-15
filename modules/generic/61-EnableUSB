@@ -64,8 +64,6 @@ echo "udev rules reloaded"
 ## Step 2: Create service file
 echo "${ENABLEUSB_SERVICE_CONTENT}" | sudo tee "${ENABLEUSB_SERVICE_FILE}" > /dev/null
 sudo chmod 644 "${ENABLEUSB_SERVICE_FILE}"
-sudo systemctl daemon-reload
-echo "USB handler service created and systemd daemons reloaded"
 
 ########################################
 # Return to saved directory            #

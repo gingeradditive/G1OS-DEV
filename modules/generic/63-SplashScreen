@@ -57,7 +57,6 @@ sudo sed -i '1s/$/ logo.nologo consoleblank=0 loglevel=1 quiet/' "${SPLASHSCREEN
 echo "Boot configuration files modified successfully."
 echo "${SPLASHSCREEN_SERVICE_CONTENT}" | sudo tee "${SPLASHSCREEN_SERVICE_FILE}" > /dev/null
 sudo chmod 644 "${SPLASHSCREEN_SERVICE_FILE}"
-sudo systemctl daemon-reload
 sudo systemctl enable splashscreen.service
 echo "Splashscreen service created and enabled"
 
