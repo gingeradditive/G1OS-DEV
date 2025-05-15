@@ -22,7 +22,7 @@ SRC_DIR="/home/${BASE_USER}/KlipperScreen"
 KS_BUILD_INSTALL_SH="/home/${BASE_USER}/KlipperScreen/scripts/KlipperScreen-install.sh"
 
 BACKEND="X"
-SERVICE="Y"
+# SERVICE="Y"
 START=0
 NETWORK="N"
 
@@ -47,9 +47,13 @@ sudo -u "${BASE_USER}" git clone ${REPO} KlipperScreen
 echo "Execute installer"
 pushd "KlipperScreen" &> /dev/null || exit 1
 
+# WRN:Passing SERVICE="Y" is buggy.
+# WORKAROUND: Use yes as a workaround to pass "Y" to the installer.
+
 sudo -u "${BASE_USER}" env \
-    BACKEND="$BACKEND" SERVICE="$SERVICE" START="$START" NETWORK="$NETWORK" \
-    "${KS_BUILD_INSTALL_SH}"
+    BACKEND="$BACKEND" START="$START" NETWORK="$NETWORK" \
+    yes|"${KS_BUILD_INSTALL_SH}"
+    
 
 popd &> /dev/null || exit 1
 
