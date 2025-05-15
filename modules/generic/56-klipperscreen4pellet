@@ -39,12 +39,6 @@ pushd "/home/${BASE_USER}" &> /dev/null || exit 1
 echo "Cloning Repository"
 sudo -u "${BASE_USER}" git clone ${REPO} KlipperScreen
 
-########################################
-# Create printer_data directories      #
-########################################
-
-create_user_directories
-
 ############################################
 # Jump into KlipperScreen, run installer   #
 # and go back to home                      #
