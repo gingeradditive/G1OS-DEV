@@ -52,6 +52,8 @@ create_user_directories
 
 echo "Execute installer"
 pushd "KlipperScreen" &> /dev/null || exit 1
+export SERVICE=n
+export START=0
 sudo -u "${BASE_USER}" ./scripts/KlipperScreen-install.sh
 popd &> /dev/null || exit 1
 
