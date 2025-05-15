@@ -18,13 +18,13 @@ source /files/00-config
 ########################################
 
 REPO="https://github.com/gingeradditive/klipperscreen4pellet"
-DEPS="git"
+SRC_DIR="/home/${BASE_USER}/KlipperScreen"
+KS_BUILD_INSTALL_SH="/home/${BASE_USER}/KlipperScreen/scripts/KlipperScreen-install.sh"
 
-########################################
-# Install dependencies                 #
-########################################
-
-apt-get install --yes "${DEPS}"
+BACKEND="X"
+SERVICE="Y"
+START=0
+NETWORK="N"
 
 ########################################
 # Save current dir and switch to home  #
@@ -52,9 +52,11 @@ create_user_directories
 
 echo "Execute installer"
 pushd "KlipperScreen" &> /dev/null || exit 1
-export SERVICE=n
-export START=0
-sudo -u "${BASE_USER}" ./scripts/KlipperScreen-install.sh
+
+sudo -u "${BASE_USER}" env \
+    BACKEND="$BACKEND" SERVICE="$SERVICE" START="$START" NETWORK="$NETWORK" \
+    "${KS_BUILD_INSTALL_SH}"
+
 popd &> /dev/null || exit 1
 
 ########################################
