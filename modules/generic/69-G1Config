@@ -18,13 +18,13 @@ source /files/00-config
 ########################################
 
 REPO="https://github.com/gingeradditive/G1-Configs"
-DEPS="git"
+DEPS=(git python3-pip)
 
 ########################################
 # Install dependencies                 #
 ########################################
 
-apt-get install --yes "${DEPS}"
+apt-get install --yes "${DEPS[@]}"
 
 ########################################
 # Save current dir and switch to home  #
