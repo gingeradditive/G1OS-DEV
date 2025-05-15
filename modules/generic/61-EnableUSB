@@ -23,7 +23,6 @@ ENABLEUSB_PRINTER_GCODE_FOLDER="/home/${BASE_USER}/printer_data/gcodes/"
 ENABLEUSB_RULE_FILE="/etc/udev/rules.d/usbstick.rules"
 ENABLEUSB_RULE='ACTION=="add", KERNEL=="sd[a-z][0-9]", TAG+="systemd", ENV{SYSTEMD_WANTS}="usbstick-handler@%k"'
 ENABLEUSB_SERVICE_FILE="/lib/systemd/system/usbstick-handler@.service"
-POWERBUTTON_ADD_TO_PATH="1"
 ENABLEUSB_SERVICE_CONTENT="[Unit]
 Description=Mount USB sticks
 BindsTo=dev-%i.device
