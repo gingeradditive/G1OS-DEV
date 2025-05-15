@@ -56,9 +56,3 @@ popd &> /dev/null || exit 1
 ########################################
 
 popd &> /dev/null || exit 1
-
-########################################
-# Enable service                       #
-########################################
-
-systemctl_if_exists enable moonraker.service

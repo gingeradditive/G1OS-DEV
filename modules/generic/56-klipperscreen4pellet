@@ -66,8 +66,3 @@ popd &> /dev/null || exit 1
 if [[ -f $MOONRAKER_CONFIG ]]; then
     cat /files/moonraker_klipperscreen4pellet.conf >> "$MOONRAKER_CONFIG"
 fi
-########################################
-# Enable service                       #
-########################################
-
-systemctl_if_exists enable moonraker.service
