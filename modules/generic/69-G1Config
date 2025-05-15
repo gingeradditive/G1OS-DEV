@@ -45,7 +45,7 @@ sudo -u "${BASE_USER}" git clone ${REPO} G1-Configs
 ########################################
 
 echo "Execute installer"
-pushd "KlipperScreen" &> /dev/null || exit 1
+pushd "G1-Configs" &> /dev/null || exit 1
 
 sudo -u "${BASE_USER}" bash ./install.sh
 
