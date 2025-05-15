@@ -17,7 +17,7 @@ source /files/00-config
 # Configuration                        #
 ########################################
 
-INSTALL_SCRIPT="https://raw.githubusercontent.com/Frix-x/klippain-shaketune/main/install.sh"
+REPO="https://github.com/Frix-x/klippain-shaketune"
 DEPS="git"
 
 ########################################
@@ -36,11 +36,40 @@ pushd "/home/${BASE_USER}" &> /dev/null || exit 1
 # Clone repository                     #
 ########################################
 
-echo "Run install script"
-wget -O - ${INSTALL_SCRIPT} | bash
+echo "Cloning Repository"
+sudo -u "${BASE_USER}" git clone ${REPO} klippain_installer
+
+#################################################
+# Jump into klippain_installer, run installer   #
+# and go back to home                           #
+#################################################
+
+echo "Execute installer"
+pushd "klippain_installer" &> /dev/null || exit 1
+
+sed \
+  -e 's|if \[ "$EUID" -eq 0 \]; then|if false; then|' \
+  -e 's|if ! command -v python3 &> /dev/null; then|if false; then|' \
+  -e 's|if \[.*klipper.service.*\]; then|if true; then|' \
+  < install.sh > temp_install.sh
+chmod +x temp_install.sh
+sudo -u "${BASE_USER}" ./temp_install.sh
+rm temp_install.sh
+
+popd &> /dev/null || exit 1
+
+########################################
+# Remove klippain_installer            #
+########################################
+rm -rf klippain_installer
 
 ########################################
 # Return to saved directory            #
 ########################################
 
 popd &> /dev/null || exit 1
+
+######################################
+# Fix virtualenv path                #
+######################################
+sed -i 's|virtualenv: ~/klippain_shaketune-env|virtualenv: ~/klippy-env|' "/home/${BASE_USER}/printer_data/config/moonraker.conf"
