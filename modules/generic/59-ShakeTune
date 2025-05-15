@@ -37,7 +37,7 @@ pushd "/home/${BASE_USER}" &> /dev/null || exit 1
 ########################################
 
 echo "Run install script"
-sudo -u "${BASE_USER}" wget -O - ${INSTALL_SCRIPT} | bash
+wget -O - ${INSTALL_SCRIPT} | bash
 
 ########################################
 # Return to saved directory            #
