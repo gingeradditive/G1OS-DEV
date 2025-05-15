@@ -49,12 +49,7 @@ pushd "KlipperScreen" &> /dev/null || exit 1
 
 # WRN:Passing SERVICE="Y" is buggy.
 # WORKAROUND: Use yes as a workaround to pass "Y" to the installer.
-
-env \
-    BACKEND="$BACKEND" START="$START" NETWORK="$NETWORK" \
-    yes|"${KS_BUILD_INSTALL_SH}"
-    
-
+sudo -u ${BASE_USER} bash -c 'env BACKEND="$BACKEND" START="$START" NETWORK="$NETWORK" yes | /home/pi/KlipperScreen/scripts/KlipperScreen-install.sh'
 popd &> /dev/null || exit 1
 
 ########################################
