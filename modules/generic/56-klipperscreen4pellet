@@ -50,7 +50,7 @@ pushd "KlipperScreen" &> /dev/null || exit 1
 # WRN:Passing SERVICE="Y" is buggy.
 # WORKAROUND: Use yes as a workaround to pass "Y" to the installer.
 
-sudo -u "${BASE_USER}" env \
+env \
     BACKEND="$BACKEND" START="$START" NETWORK="$NETWORK" \
     yes|"${KS_BUILD_INSTALL_SH}"
     
