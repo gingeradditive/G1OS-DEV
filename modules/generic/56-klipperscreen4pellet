@@ -17,51 +17,45 @@ source /files/00-config
 # Configuration                        #
 ########################################
 
-REPO="https://github.com/gingeradditive/klipperscreen4pellet"
+REPO="https://github.com/gingeradditive/klipperscreen4pellet.git"
 SRC_DIR="/home/${BASE_USER}/KlipperScreen"
 KS_BUILD_INSTALL_SH="/home/${BASE_USER}/KlipperScreen/scripts/KlipperScreen-install.sh"
 
 BACKEND="X"
-# SERVICE="Y"
+SERVICE="Y"
 START=0
 NETWORK="N"
 
 ########################################
-# Save current dir and switch to home  #
+# Switch to BASE_USER home directory   #
 ########################################
 
-pushd "/home/${BASE_USER}" &> /dev/null || exit 1
+pushd /home/"${BASE_USER}" &> /dev/null || exit 1
 
 ########################################
 # Clone repository                     #
 ########################################
 
-echo "Cloning Repository"
-sudo -u "${BASE_USER}" git clone ${REPO} KlipperScreen
-
-############################################
-# Jump into KlipperScreen, run installer   #
-# and go back to home                      #
-############################################
-
-echo "Execute installer"
-pushd "KlipperScreen" &> /dev/null || exit 1
-
-# WRN:Passing SERVICE="Y" is buggy.
-# WORKAROUND: Use yes as a workaround to pass "Y" to the installer.
-sudo -u ${BASE_USER} bash -c 'env BACKEND="$BACKEND" START="$START" NETWORK="$NETWORK" yes | /home/pi/KlipperScreen/scripts/KlipperScreen-install.sh'
-popd &> /dev/null || exit 1
+sudo -u "${BASE_USER}" git clone ${REPO} "${SRC_DIR}"
 
 ########################################
-# Return to saved directory            #
+# Run KlipperScreen install routine    #
 ########################################
 
-popd &> /dev/null || exit 1
+sudo -u "${BASE_USER}" env \
+    BACKEND="$BACKEND" SERVICE="$SERVICE" START="$START" NETWORK="$NETWORK" \
+    "${KS_BUILD_INSTALL_SH}"
 
 ########################################
 # Add config to moonraker.conf         #
 ########################################
 
 if [[ -f $MOONRAKER_CONFIG ]]; then
-    cat /files/moonraker_klipperscreen4pellet.conf >> "$MOONRAKER_CONFIG"
+    cat /files/moonraker_klipperscreen.conf >> "$MOONRAKER_CONFIG"
 fi
+
+########################################
+# Return to last directory             #
+########################################
+
+popd &> /dev/null || exit 1
