@@ -17,8 +17,8 @@ source /files/00-config
 # Copy motd config                     #
 ########################################
 
-cp /files/motd/10-mainsailos /etc/update-motd.d/10-mainsailos
-chmod +x /etc/update-motd.d/10-mainsailos
+cp /files/motd/10-G1OS /etc/update-motd.d/10-G1OS
+chmod +x /etc/update-motd.d/10-G1OS
 
 ########################################
 # Patch dynamic motd                   #
