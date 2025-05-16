@@ -51,7 +51,7 @@ sudo -u "${BASE_USER}" env \
 ########################################
 
 if [[ -f $MOONRAKER_CONFIG ]]; then
-    cat /files/moonraker_klipperscreen.conf >> "$MOONRAKER_CONFIG"
+    cat /files/moonraker_klipperscreen4pellet.conf >> "$MOONRAKER_CONFIG"
 fi
 
 ########################################
