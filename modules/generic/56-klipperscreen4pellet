@@ -24,7 +24,7 @@ KS_BUILD_INSTALL_SH="/home/${BASE_USER}/KlipperScreen/scripts/KlipperScreen-inst
 BACKEND="X"
 SERVICE="Y"
 START=0
-NETWORK="N"
+NETWORK="Y"
 
 ########################################
 # Switch to BASE_USER home directory   #
