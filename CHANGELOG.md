@@ -2,6 +2,15 @@
 # Changelog
 All notable changes to MainsailOS will be documented in this file.
 
+## [2.0.2](https://github.com/mainsail-crew/MainsailOS/releases/tag/2.0.2) - 2025-06-20
+### Bug Fixes and Improvements
+
+- Update splashscreen configuration paths and service settings
+
+### Other
+
+- Bump version to v2.0.2
+
 ## [2.0.1](https://github.com/mainsail-crew/MainsailOS/releases/tag/2.0.1) - 2025-06-10
 ### Features
 
