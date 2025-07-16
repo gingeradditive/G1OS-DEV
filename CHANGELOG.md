@@ -2,6 +2,12 @@
 # Changelog
 All notable changes to MainsailOS will be documented in this file.
 
+## [2.0.3](https://github.com/mainsail-crew/MainsailOS/releases/tag/2.0.3) - 2025-07-16
+### Other
+
+- Remove obsolete ShakeTune installation script
+- Bump version to v2.0.3
+
 ## [2.0.2](https://github.com/mainsail-crew/MainsailOS/releases/tag/2.0.2) - 2025-06-20
 ### Bug Fixes and Improvements
 
